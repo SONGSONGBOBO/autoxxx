@@ -1,0 +1,15 @@
+[package]
+name = "auto"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+enigo = "*"
+lazy_static = "*"
+rand = "*"
+eframe = "*"
+egui = "*"
+serde_json = "*"
+serde = { version = "*", features = ["derive"] }
