@@ -13,3 +13,9 @@ eframe = "*"
 egui = "*"
 serde_json = "*"
 serde = { version = "*", features = ["derive"] }
+libloading = "0.7.4"
+msdk_adapter = "0.1.2"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "*", features = ["winuser"] }
+anyhow = "*"

@@ -1,6 +1,6 @@
 extern crate enigo;
 
-use std::time::Duration;
+use std::time::{Duration, SystemTime};
 use eframe::{NativeOptions, run_native};
 use enigo::*;
 use crate::adapter::click_behavior::KeyBoardClick;
@@ -13,13 +13,16 @@ mod adapter;
 mod common;
 mod views;
 
-fn main() -> eframe::Result<()> {
-    //let mut keyBoard = KeyBoard::new();
+use msdk_driver_adapter::{MsdkAdapter, MsdkKeyBoardOperation};
+
+
+fn main() -> Result<(), eframe::Error>  {
+//let mut keyBoard = KeyBoard::new();
     //keyBoard.click("ssss");
     //keyBoard.click(&Key::Tab)
     //keyBoard.click_hold("sa", Duration::from_secs(50))
-    let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default().with_inner_size([320.0, 240.0]),
+   /* let options = eframe::NativeOptions {
+        viewport: egui::ViewportBuilder::default().with_inner_size([1000.0, 1000.0]),
         ..Default::default()
     };
     eframe::run_native(
@@ -30,6 +33,12 @@ fn main() -> eframe::Result<()> {
             //egui_extras::install_image_loaders(&cc.egui_ctx);
 
             Box::<MyEguiApp>::default()
-        }),
-    )
+        }),a
+    )*/
+
+    let msdk = MsdkAdapter::new(1).unwrap();
+    msdk.key_press(65, 1).expect("TODO: panic message");
+    let res = msdk.close().expect("TODO: panic message");
+    println!("{:?}", res);
+    Ok(())
 }
