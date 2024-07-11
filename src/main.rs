@@ -18,11 +18,11 @@ fn main() -> eframe::Result<()> {
     //keyBoard.click("ssss");
     //keyBoard.click(&Key::Tab)
     //keyBoard.click_hold("sa", Duration::from_secs(50))
-    let options = eframe::NativeOptions {
+    let options = NativeOptions {
         viewport: egui::ViewportBuilder::default().with_inner_size([320.0, 240.0]),
         ..Default::default()
     };
-    eframe::run_native(
+    run_native(
         "My egui App",
         options,
         Box::new(|cc| {
